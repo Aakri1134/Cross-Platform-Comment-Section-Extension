@@ -1,4 +1,4 @@
-const LINKS = ['https://www.google.com', 'https://www.youtube.com'];
+const LINKS = ['https://www.google.com', 'https://www.youtube.com','https://www.netflix.com'];
 
 chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
