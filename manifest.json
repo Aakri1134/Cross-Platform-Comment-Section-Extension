@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Cross Platform Comment Section Chrome Extension",
+    "description": "A chrome extension that provides a common comment section for similar content all over the web.",
+    "version": "1.0",
+    "icons": {
+
+    },
+    "permissions": [
+        "sidePanel"
+      ],
+      "side_panel": {
+        "default_path": "sidePanel.html"
+      },
+      "background": {
+        "service_worker": "background.js"
+      },
+      "action": {
+        "default_title": "Click"
+      }
+}
