@@ -24,7 +24,7 @@
     "default_title": "Click"
   },
   "oauth2": {
-    "client_id": "610976587054-moqgte99dl41fth9okal7e65jf8t0ckq.apps.googleusercontent.com",
+    "client_id": "610976587054-tpalq3u2e9ond1tn2na8g0diq04mea8c.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/userinfo.profile"

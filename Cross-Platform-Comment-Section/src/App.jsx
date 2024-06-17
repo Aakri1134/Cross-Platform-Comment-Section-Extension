@@ -1,13 +1,36 @@
-import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import CommentSection from "./Components/CommentSection";
+import SignIn from "./Components/SignIn";
+import { firebaseConfig } from "./constants/credentials";
+
+const firebase = initializeApp(firebaseConfig);
+const auth = getAuth(firebase);
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, loading, error] = useAuthState(auth);
 
-  return (
-    <>
-      <button className="text-3xl text-green-500 border-4 border-green-400">sign in with google</button>
-    </>
-  );
+  if (loading) {
+    return (
+      <div>
+        <p>Initialising User...</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
+  if (user) {
+    return (
+      <CommentSection/>
+    );
+  }
+  return <SignIn/>;
 }
 
 export default App;
