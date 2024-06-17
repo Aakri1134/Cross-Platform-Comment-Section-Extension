@@ -1,12 +1,29 @@
+import { collection, onSnapshot, query } from "firebase/firestore"
+import { useEffect, useState } from "react"
+import { db } from "../App"
+import { where } from "firebase/firestore"
 
-import React from "react";
+const CommentSection = (props) => {
+    const { room } = props
+    const [comments, setComments] = useState([])
 
-function CommentSection(){
+    useEffect(()=>{
+        let messagesRef = collection(db, "comments")
+        let queryMessage = query(messagesRef, where("room", "==", room))
+        const unsuscribe = onSnapshot(queryMessage, (snapshot) => {
+            let comms = []
+            snapshot.forEach((doc) => {
+                comms.push({...doc.data(), id: doc.i})
+            })
+            setComments(comms)
+        })
 
+        return () => unsuscribe()
+    },[room])
     return (
-        <h1>user</h1>
+        <div>
+            {comments.map((comment) => <h1>{comment.text}</h1>)}
+        </div>
     )
-
 }
-
-export default CommentSection;
+export default CommentSection
