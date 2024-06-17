@@ -39,13 +39,13 @@ function App() {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
             func: () => {
-              const titleElement = document.querySelector(
-                "div.medium.default-ltr-cache-m1ta4i>h4"
-              );
-              return titleElement ? titleElement.innerText : "";
+              const titleAttribute = document.querySelectorAll("[data-uia='video-title']")[0];
+              return titleAttribute ? titleAttribute.innerText : "";
             },
           }).then(([result]) => {
-            setRoom(result.result || "");
+            if(result.result){
+              setRoom(result.result);
+            }
           });
       }
     });
@@ -63,7 +63,7 @@ function App() {
   }
   if (error) {
     return (
-      <div>
+      <div className="flex ">
         <p>Error: {error}</p>
       </div>
     );
