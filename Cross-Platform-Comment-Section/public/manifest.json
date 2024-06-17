@@ -1,22 +1,33 @@
 {
-    "manifest_version": 3,
-    "name": "Cross Platform Comment Section Chrome Extension",
-    "description": "A chrome extension that provides a common comment section for similar content all over the web.",
-    "version": "1.0",
-    "host_permissions": ["https://*.youtube.com/*", "https://*.google.com/*", "https://*.netflix.com/*"],
-    "icons": {
-
-    },
-    "permissions": [
-        "sidePanel", "scripting"
-      ],
-      "side_panel": {
-        "default_path": "sidePanel.html"
-      },
-      "background": {
-        "service_worker": "background.js"
-      },
-      "action": {
-        "default_title": "Click"
-      }
+  "manifest_version": 3,
+  "name": "Cross Platform Comment Section Chrome Extension",
+  "description": "A chrome extension that provides a common comment section for similar content all over the web.",
+  "version": "1.0",
+  "host_permissions": [
+    "https://*.youtube.com/*",
+    "https://*.google.com/*",
+    "https://*.netflix.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"
+  },
+  "icons": {},
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAldcuF/dtLsIFzFJmYVVkiaQsG6JcJVq8cVMosmN8l8isEPZkGWRTz1wMonrBFnaaB/jT1wLiLwqx/pA90Q7bu1ey4mrSnEV191qgqJZg5zoGdcT3Vhw1GWgkBOQjRRTk2eio6/Wkjyy/Xhsmudt3MyN/dTc8jm5cd/jBeEBqO14ILGzlMnbp692WG5DwXVyGmBQ0poO8JOnzaMg6TfubUJ3wEhl+B3L7YfA5s9dYHQd35VSwO8rl5P1o6uFZLw+nM75v8KAQbRY+4ZF4FK4I5GZhdjMN/kubH/nhmyetL2Bj3qValTwxbSZm+YuTh6tG4XcTtKNcJrPYlLe1Jr8j8wIDAQAB",
+  "permissions": ["sidePanel", "identity","scripting"],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Click"
+  },
+  "oauth2": {
+    "client_id": "610976587054-moqgte99dl41fth9okal7e65jf8t0ckq.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  }
 }

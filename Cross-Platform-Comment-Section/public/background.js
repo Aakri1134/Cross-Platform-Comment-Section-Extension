@@ -1,4 +1,4 @@
-const LINKS = ['https://www.google.com', 'https://www.youtube.com','https://www.netflix.com'];
+const LINKS = ['https://www.google.com', 'https://www.youtube.com', 'https://www.netflix.com'];
 
 chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
@@ -19,7 +19,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
     if (LINKS.includes(url.origin)) {
         await chrome.sidePanel.setOptions({
             tabId,
-            path: 'sidepanel.html',
+            path: 'index.html',
             enabled: true
         });
     } else {
