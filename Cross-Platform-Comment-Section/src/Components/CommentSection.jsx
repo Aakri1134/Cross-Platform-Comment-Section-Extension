@@ -8,17 +8,6 @@ const CommentSection = (props) => {
     const [comments, setComments] = useState([])
 
     useEffect(()=>{
-        document.addEventListener('DOMContentLoaded', () => {
-            const listElement = document.querySelector('.overflow-y-auto');
-            const lastChild = listElement.lastChild;
-          
-            if (lastChild) {
-              lastChild.scrollIntoView({ behavior: 'smooth' });
-            }
-          });
-          
-    },[comments])
-    useEffect(()=>{
         let messagesRef = collection(db, "comments")
         let queryMessage = query(messagesRef, 
             where("room", "==", room),
