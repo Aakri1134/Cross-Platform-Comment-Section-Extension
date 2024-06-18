@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore"
 import { db, auuth } from "../App"
 
-const PostComments = (props) => {
-    const [newMessage, setNewMessage] = useState("")
-    const messagesRef = collection(db, "comments")
-    const { room } = props
+const Reply = (props) => {
+    const { name, userId, room, isReply } = props
+    console.log("userId == ")
+    console.log(userId)
+    console.log(typeof(userId))
+    const [newMessage, setNewMessage] = useState(`@${name}  `)
+    const address = isReply? isReply : `comments/${userId}/replies`
+    const messagesRef = collection(db, address )
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log("New Message Uploaded")
@@ -18,16 +23,18 @@ const PostComments = (props) => {
                 createdAt : serverTimestamp(),
                 user : auuth.currentUser.displayName,
                 room: room,
-                replyTo: ""
+                replyTo: userId
             })
 
             setNewMessage("")
         }
     }
 
-    return (
-        <div className=" flex-none h-3">
-            <form onSubmit={handleSubmit} className="flex flex-row justify-between">
+
+
+    return(
+        <div className=" flex-none bg-orange-400 h-3">
+            <form onSubmit={handleSubmit} className="flex flex-row justify-between pl-4">
                 <input 
                     className="flex-1"
                     placeholder="Comment here"
@@ -41,4 +48,4 @@ const PostComments = (props) => {
         </div>
     )
 }
-export default PostComments
+export default Reply

@@ -90,8 +90,8 @@ function App() {
     return (
       <div className="flex flex-col h-screen w-full">
         <Title room = {room}/>
-        <CommentSection room = {room}/>
         <PostComments room = {room}/>
+        <CommentSection room = {room}/>
         <button onClick={() => {auth.signOut()}} className="flex-initial">Escape The Matrix</button>
       </div>
     );
