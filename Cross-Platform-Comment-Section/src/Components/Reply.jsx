@@ -26,7 +26,7 @@ const Reply = (props) => {
                 replyTo: userId
             })
 
-            setNewMessage("")
+            setNewMessage(`@${name}  `)
         }
     }
 

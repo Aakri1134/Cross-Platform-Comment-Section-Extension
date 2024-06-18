@@ -17,7 +17,7 @@ const ViewReply = (props) => {
         let messagesRef = collection(db, addresss)
         let queryMessage = query(messagesRef, 
             where("room", "==", room),
-            orderBy("createdAt", "desc"))
+            orderBy("createdAt"))
         const unsuscribe = onSnapshot(queryMessage, (snapshot) => {
             let reps = []
             snapshot.forEach((doc) => {
