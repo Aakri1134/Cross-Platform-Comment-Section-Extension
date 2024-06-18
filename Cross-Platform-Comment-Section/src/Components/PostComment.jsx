@@ -28,19 +28,19 @@ useEffect(() => {
     
 }, [newMessage])
     return (
-        <>
-            <form onSubmit={handleSubmit} className="new-comment-form">
+        <div className=" flex-none bg-orange-400">
+            <form onSubmit={handleSubmit} className="flex flex-row justify-between">
                 <input 
-                    className="new-comment-input"
+                    className="flex-1"
                     placeholder="Comment here"
                     onChange={(e) => {
                         setNewMessage(e.target.value)
                     }}
                     value={newMessage}
                 />
-                <button type="submit" className="send-button">Post</button>
+                <button type="submit" className="flex-none bg-red-500 rounded-full border-2 w-7 ">Post</button>
             </form>
-        </>
+        </div>
     )
 }
 export default PostComments

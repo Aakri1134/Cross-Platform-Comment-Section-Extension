@@ -1,5 +1,5 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { db } from "../App"
 import { where } from "firebase/firestore"
 
@@ -7,6 +7,17 @@ const CommentSection = (props) => {
     const { room } = props
     const [comments, setComments] = useState([])
 
+    useEffect(()=>{
+        document.addEventListener('DOMContentLoaded', () => {
+            const listElement = document.querySelector('.overflow-y-auto');
+            const lastChild = listElement.lastChild;
+          
+            if (lastChild) {
+              lastChild.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+          
+    },[comments])
     useEffect(()=>{
         let messagesRef = collection(db, "comments")
         let queryMessage = query(messagesRef, 
@@ -19,15 +30,14 @@ const CommentSection = (props) => {
             })
             setComments(comms)
         })
-
         return () => unsuscribe()
     },[room])
     return (
-        <div>
+        <div  className=" flex-1 overflow-y-auto overflow-x-hidden mt-3 mb-3 no-scrollbar">
             {comments.map((comment) => 
-            <div className="comment-bubble" key={comment.id}>
-                <span className="commenter">{comment.user}</span>
-                {comment.text}
+            <div className=" border-b-2 border-sky-300/[.55] hover:shadow-md pr-2 pl-2 pb-1 " key={comment.id}>
+                <p className="font-mono font-bold text-wrap text-slate-900 pt-2 pl-1 pr-1 ">{comment.user + ": "}</p>
+                <p className="text-wrap pl-2 pb-1 pr-1 leading-4 font-semibold text-gray-500">{comment.text}</p>
             </div>
             )}
         </div>

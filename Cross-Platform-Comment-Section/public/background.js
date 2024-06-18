@@ -26,6 +26,7 @@ chrome.tabs.onActivated.addListener((a) => {
         }else{
             await chrome.sidePanel.setOptions({
                 tabId,
+                width: 300,
                 path: 'index.html',
                 enabled: true
             });

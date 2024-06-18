@@ -88,12 +88,12 @@ function App() {
     getRoomId()
   })
     return (
-      <>
+      <div className="flex flex-col h-screen w-full">
         <Title room = {room}/>
         <CommentSection room = {room}/>
         <PostComments room = {room}/>
-        <button onClick={() => {auth.signOut()}}>Escape The Matrix</button>
-      </>
+        <button onClick={() => {auth.signOut()}} className="flex-initial">Escape The Matrix</button>
+      </div>
     );
   }
   return <SignIn/>;
