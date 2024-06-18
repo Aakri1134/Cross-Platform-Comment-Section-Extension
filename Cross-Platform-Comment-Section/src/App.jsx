@@ -47,6 +47,18 @@ function App() {
               setRoom(result.result);
             }
           });
+      }else if(tabs[0].url.includes("primevideo.com")){
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: () => {
+              const titleAttribute = document.querySelectorAll("[tabindex='0']")[0];
+              return titleAttribute ? titleAttribute.innerText : "";
+            },
+          }).then(([result]) => {
+            if(result.result){
+              setRoom(result.result);
+            }
+          });
       }
     });
   }

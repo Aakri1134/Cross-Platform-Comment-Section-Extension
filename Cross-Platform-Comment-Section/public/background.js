@@ -1,4 +1,4 @@
-const LINKS = ['https://www.youtube.com', 'https://www.netflix.com'];
+const LINKS = ['https://www.youtube.com/watch', 'https://www.netflix.com/watch','https://www.primevideo.com'];
 
 chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
@@ -24,24 +24,17 @@ chrome.tabs.onActivated.addListener((a) => {
                 enabled: false
             });
         }else{
-            if(url.pathname.includes("watch")){
-                await chrome.sidePanel.setOptions({
-                    tabId,
-                    path: 'index.html',
-                    enabled: true
-                });
-            }else{
-                await chrome.sidePanel.setOptions({
-                    tabId,
-                    enabled: false
-                });
-            }
+            await chrome.sidePanel.setOptions({
+                tabId,
+                path: 'index.html',
+                enabled: true
+            });
         }
     })
 })
 chrome.tabs.onUpdated.addListener((a,b,c) => {
     chrome.tabs.query({ active: true, currentWindow: true },async (tabs) => {
-        const LINKS = ['https://www.youtube.com', 'https://www.netflix.com'];
+        const LINKS = ['https://www.youtube.com', 'https://www.netflix.com','https://www.primevideo.com'];
 
         if (!tabs[0].url) {
             await chrome.sidePanel.setOptions({
@@ -60,18 +53,11 @@ chrome.tabs.onUpdated.addListener((a,b,c) => {
                 enabled: false
             });
         }else{
-            if(url.pathname.includes("watch")){
-                await chrome.sidePanel.setOptions({
-                    tabId,
-                    path: 'index.html',
-                    enabled: true
-                });
-            }else{
-                await chrome.sidePanel.setOptions({
-                    tabId,
-                    enabled: false
-                });
-            }
+            await chrome.sidePanel.setOptions({
+                tabId,
+                path: 'index.html',
+                enabled: true
+            });
         }
     })
 })

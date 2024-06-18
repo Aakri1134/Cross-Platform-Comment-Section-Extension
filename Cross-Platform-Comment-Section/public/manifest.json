@@ -5,7 +5,8 @@
   "version": "1.0",
   "host_permissions": [
     "https://*.youtube.com/*",
-    "https://*.netflix.com/*"
+    "https://*.netflix.com/*",
+    "https://*.primevideo.com/*"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"
