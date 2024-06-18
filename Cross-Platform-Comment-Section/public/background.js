@@ -7,9 +7,7 @@ chrome.sidePanel
 chrome.tabs.onActivated.addListener((a) => {
     chrome.tabs.query({ active: true, currentWindow: true },async (tabs) => {
 
-        const url = new URL(tabs[0].url);
-        console.log(url)
-        let tabId = tabs[0].id
+        
 
         if (!tabs[0].url) {
             await chrome.sidePanel.setOptions({
@@ -17,6 +15,10 @@ chrome.tabs.onActivated.addListener((a) => {
                 enabled: false
             });
         }
+
+        const url = new URL(tabs[0].url);
+        console.log(url)
+        let tabId = tabs[0].id
 
         if (!LINKS.includes(url.origin)){
             await chrome.sidePanel.setOptions({
@@ -35,11 +37,6 @@ chrome.tabs.onActivated.addListener((a) => {
 })
 chrome.tabs.onUpdated.addListener((a,b,c) => {
     chrome.tabs.query({ active: true, currentWindow: true },async (tabs) => {
-        const LINKS = ['https://www.youtube.com', 'https://www.netflix.com','https://www.primevideo.com'];
-
-        const url = new URL(tabs[0].url);
-        console.log(url)
-        let tabId = tabs[0].id
 
         if (!tabs[0].url) {
             await chrome.sidePanel.setOptions({
@@ -47,6 +44,10 @@ chrome.tabs.onUpdated.addListener((a,b,c) => {
                 enabled: false
             });
         }
+
+        const url = new URL(tabs[0].url);
+        console.log(url)
+        let tabId = tabs[0].id
 
         if (!LINKS.includes(url.origin)){
             await chrome.sidePanel.setOptions({
