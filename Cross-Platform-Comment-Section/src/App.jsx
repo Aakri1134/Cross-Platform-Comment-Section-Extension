@@ -78,7 +78,7 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex flex-col h-screen w-full justify-center items-center">
+      <div className="flex flex-col h-screen w-full justify-center items-center bg-gray-50 dark:bg-gray-900">
         <Loading />
       </div>
     );
@@ -121,7 +121,11 @@ function App() {
       </div>
     );
   }
-  return <SignIn />;
+  return (
+    <div className="flex h-screen w-full justify-center items-center bg-gray-50 dark:bg-gray-900">
+      <SignIn />
+    </div>
+  );
 }
 
 export default App;
