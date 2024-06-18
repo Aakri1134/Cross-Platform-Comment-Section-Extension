@@ -52,7 +52,7 @@ function App() {
   }
   useEffect(()=>{
     getRoomId()
-  },[])
+  },)
 
   if (loading) {
     return (
