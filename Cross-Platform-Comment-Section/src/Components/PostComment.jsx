@@ -1,45 +1,51 @@
-import { useEffect, useState } from "react"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-import { db, auuth } from "../App"
+import { useEffect, useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db, auuth } from "../App";
 
 const PostComments = (props) => {
-    const [newMessage, setNewMessage] = useState("")
-    const messagesRef = collection(db, "comments")
-    const { room } = props
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log("New Message Uploaded")
-        console.log(newMessage)
+  const [newMessage, setNewMessage] = useState("");
+  const messagesRef = collection(db, "comments");
+  const { room } = props;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("New Message Uploaded");
+    console.log(newMessage);
+    if (newMessage === "") {
+      return;
+    } else {
+      await addDoc(messagesRef, {
+        text: newMessage,
+        createdAt: serverTimestamp(),
+        user: auuth.currentUser.displayName,
+        room: room,
+        replyTo: "",
+      });
 
-        if (newMessage === ""){
-            return;
-        }else{
-            await addDoc(messagesRef,{
-                text : newMessage,
-                createdAt : serverTimestamp(),
-                user : auuth.currentUser.displayName,
-                room: room,
-                replyTo: ""
-            })
-
-            setNewMessage("")
-        }
+      setNewMessage("");
     }
+  };
 
-    return (
-        <div className=" flex-none h-3">
-            <form onSubmit={handleSubmit} className="flex flex-row justify-between">
-                <input 
-                    className="flex-1"
-                    placeholder="Comment here"
-                    onChange={(e) => {
-                        setNewMessage(e.target.value)
-                    }}
-                    value={newMessage}
-                />
-                <button type="submit" className="flex-none rounded-full border-2 w-7 border-red-400 ">Post</button>
-            </form>
-        </div>
-    )
-}
-export default PostComments
+  return (
+    <div className="flex flex-col px-6 pb-3 gap-4 bg-gray-50 dark:bg-gray-900">
+      <div className="relative h-11 w-full">
+        <input
+          placeholder="Comment here.."
+          className="peer h-full w-full border-b border-primary-950 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-primary-50 outline outline-0 transition-all placeholder-shown:border-primary-900 focus:border-primary-50 focus:outline-0 disabled:border-0 disabled:bg-primary-50"
+          onChange={(e) => {
+            setNewMessage(e.target.value);
+          }}
+          value={newMessage}
+        />
+      </div>
+      <div>
+        <button
+          onClick={handleSubmit}
+          className="text-primary-50 bg-primary-700 hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 font-medium rounded-full text-sm px-5 py-2 text-center me-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        >
+          Comment
+        </button>
+      </div>
+    </div>
+  );
+};
+export default PostComments;
