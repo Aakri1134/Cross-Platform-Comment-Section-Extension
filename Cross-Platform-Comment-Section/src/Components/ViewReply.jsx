@@ -3,6 +3,7 @@ import { collection, query, where, orderBy } from "firebase/firestore"
 import { db } from "../App"
 import { onSnapshot } from "firebase/firestore"
 import Reply from "./Reply"
+import ReplyBubble from "./ReplyBubble"
 
 
 const ViewReply = (props) => {
@@ -31,11 +32,7 @@ const ViewReply = (props) => {
     return(
         <div  className=" flex-1 overflow-x-hidden mt-1 mb-3 ml-4 no-scrollbar">
             {replies.map((comment) =>
-                <div className=" border-b-2 border-sky-300/[.55] hover:shadow-md pr-2 pl-2 pb-1 " key={comment.id}>
-                    <p className="font-mono font-bold text-wrap text-slate-900 pt-2 pl-1 pr-1 ">{comment.user + ": "}</p>
-                    <p className="text-wrap pl-2 pb-1 pr-1 leading-4 font-semibold text-gray-500">{comment.text}</p>
-                    <Reply name = {comment.user} userId = {comment.id} room = {room} isReply ={address}/>
-                </div>
+                <ReplyBubble comment = {comment} address = {address} room = {room}/>
             )}
         </div>
     )

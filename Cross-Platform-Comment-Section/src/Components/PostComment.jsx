@@ -10,6 +10,7 @@ const PostComments = (props) => {
         e.preventDefault()
         console.log("New Message Uploaded")
         console.log(newMessage)
+
         if (newMessage === ""){
             return;
         }else{
