@@ -102,8 +102,8 @@ function App() {
         {room != "" ? (
           <>
             <Title room={room} />
-            <CommentSection room={room} />
             <PostComments room={room} />
+            <CommentSection room={room} />
             <button
               onClick={() => {
                 auth.signOut();
