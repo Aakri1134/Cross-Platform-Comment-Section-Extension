@@ -55,7 +55,12 @@ function App() {
               setRoom(result.result);
             }
           });
-      } else if (tabs[0].url.includes("primevideo.com")) {
+          
+      }else if (tabs[0].url.includes("netflix.com")){
+
+        setRoom("");
+            
+      }else if (tabs[0].url.includes("primevideo.com")) {
         chrome.scripting
           .executeScript({
             target: { tabId: tabs[0].id },
