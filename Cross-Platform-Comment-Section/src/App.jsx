@@ -9,6 +9,7 @@ import { firebaseConfig } from "./constants/credentials";
 import { useEffect, useState } from "react";
 import { getFirestore } from "firebase/firestore";
 import Loading from "./Components/Loading";
+import SignOut from "./Components/SignOut";
 
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
@@ -98,20 +99,13 @@ function App() {
       getRoomId();
     });
     return (
-      <div className="flex flex-col h-screen w-full">
+      <div className="flex flex-col h-screen w-full bg-gray-50 dark:bg-gray-900">
         {room != "" ? (
           <>
             <Title room={room} />
             <PostComments room={room} />
             <CommentSection room={room} />
-            <button
-              onClick={() => {
-                auth.signOut();
-              }}
-              className="flex-initial"
-            >
-              Escape The Matrix
-            </button>
+            <SignOut/>
           </>
         ) : (
           <div className="flex w-full my-3 items-center justify-center">
