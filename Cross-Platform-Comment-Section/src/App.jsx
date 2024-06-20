@@ -55,19 +55,44 @@ function App() {
               setRoom(result.result);
             }
           });
-          
-      }else if (tabs[0].url.includes("netflix.com")){
-
-        setRoom("");
-            
-      }else if (tabs[0].url.includes("primevideo.com")) {
+      } else if (tabs[0].url.includes("primevideo.com")) {
         chrome.scripting
           .executeScript({
             target: { tabId: tabs[0].id },
             func: () => {
-              const titleAttribute =
-                document.querySelectorAll("[tabindex='0']")[0];
-              return titleAttribute ? titleAttribute.innerText : "";
+              const oldElements = document.querySelectorAll(
+                '[tabindex="0"] [class*="title-text"]'
+              );
+
+              console.log(document.querySelector("html").innerHTML);
+
+              let elements = [];
+
+              oldElements.forEach((element) => {
+                if (element.innerHTML != "") {
+                  elements.push(element);
+                }
+              });
+
+              let title = "";
+
+              if (elements.length == 1) {
+                title = elements[0].innerHTML;
+              }
+
+              if (elements.length == 2) {
+                title = elements[0].innerHTML + " " + elements[1].innerHTML;
+              }
+
+              if (elements.length == 3) {
+                title = elements[0].innerHTML;
+              }
+
+              if (elements.length == 4) {
+                title = elements[0].innerHTML + " " + elements[1].innerHTML;
+              }
+
+              return title ? title : "";
             },
           })
           .then(([result]) => {
@@ -110,7 +135,7 @@ function App() {
             <Title room={room} />
             <PostComments room={room} />
             <CommentSection room={room} />
-            <SignOut/>
+            <SignOut />
           </>
         ) : (
           <div className="flex w-full my-3 items-center justify-center">
