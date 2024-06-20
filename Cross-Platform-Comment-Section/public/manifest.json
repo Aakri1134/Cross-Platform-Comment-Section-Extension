@@ -6,7 +6,8 @@
   "host_permissions": [
     "https://*.youtube.com/*",
     "https://*.netflix.com/*",
-    "https://*.primevideo.com/*"
+    "https://*.primevideo.com/*",
+    "https://*.jiocinema.com/*"
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"

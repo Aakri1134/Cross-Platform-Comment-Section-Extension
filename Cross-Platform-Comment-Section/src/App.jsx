@@ -100,6 +100,24 @@ function App() {
               setRoom(result.result);
             }
           });
+      }else if (tabs[0].url.includes("jiocinema.com/tv-shows")) {
+        chrome.scripting
+          .executeScript({
+            target: { tabId: tabs[0].id },
+            func: () => {
+              const titleAttribute = document.querySelector('[role="contentinfo"] h1')
+              return titleAttribute ? titleAttribute.innerText : "";
+            },
+          })
+          .then(([result]) => {
+            if (result.result) {
+              setRoom(result.result);
+            }
+          });
+      }else if (tabs[0].url.includes("jiocinema.com/movies")) {
+        const pattern = /\/movies\/([^\/]+)\/\d+/;
+        const match = tabs[0].url.match(pattern)
+        setRoom(match[1])
       }
     });
   };
