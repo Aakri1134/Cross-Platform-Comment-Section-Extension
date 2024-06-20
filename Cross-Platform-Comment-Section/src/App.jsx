@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { getFirestore } from "firebase/firestore";
 import Loading from "./Components/Loading";
 import SignOut from "./Components/SignOut";
+import Footer from "./Components/Footer";
 
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
@@ -153,7 +154,7 @@ function App() {
             <Title room={room} />
             <PostComments room={room} />
             <CommentSection room={room} />
-            <SignOut />
+            <Footer/>
           </>
         ) : (
           <div className="flex w-full my-3 items-center justify-center">

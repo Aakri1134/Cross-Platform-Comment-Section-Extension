@@ -2,7 +2,7 @@ import { auuth } from "../App";
 
 function SignOut() {
   return (
-    <div className="pl-5 pb-3">
+    <div>
       <button
         onClick={() => {
           auuth.signOut();
