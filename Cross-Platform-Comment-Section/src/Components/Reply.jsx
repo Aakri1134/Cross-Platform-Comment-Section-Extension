@@ -3,7 +3,7 @@ import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { db, auuth } from "../App";
 
 const Reply = (props) => {
-  const { name, userId, room, isReply } = props;
+  const { name, userId, room, isReply, setIsReplying } = props;
   console.log("userId == ");
   console.log(userId);
   console.log(typeof userId);
@@ -12,6 +12,7 @@ const Reply = (props) => {
   const messagesRef = collection(db, address);
 
   const handleSubmit = async (e) => {
+    setIsReplying(false)
     e.preventDefault();
     console.log("New Message Uploaded");
     console.log(newMessage);
@@ -26,8 +27,7 @@ const Reply = (props) => {
         room: room,
         replyTo: userId,
       });
-
-      setNewMessage(`@${name}  `);
+    //   setNewMessage(`@${name}  `);
     }
   };
 

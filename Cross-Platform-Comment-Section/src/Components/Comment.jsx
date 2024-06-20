@@ -19,7 +19,7 @@ const Comment = (props) => {
             {!isReplying? <><button className="text-gray-500 font-bold" onClick={() => {setIsReplying(true);setIsViewing(true)} }>REPLY</button></>:<></>}
             {!isViewing? <button className="text-primary-500" onClick={() => {setIsViewing(true)}}>View Replies</button>:<></>}
             </div>
-            {isReplying? <><Reply name = {comment.user} userId = {comment.id} room = {room} isReply = {false} /></>:<></>}
+            {isReplying? <><Reply name = {comment.user} userId = {comment.id} room = {room} isReply = {false} setIsReplying = {setIsReplying}/></>:<></>}
             {isViewing? <><ViewReply comment = {comment} room = {room}/></>:<></>}
         </div>
     )

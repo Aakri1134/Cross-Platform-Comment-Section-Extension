@@ -35,6 +35,7 @@ const ReplyBubble = (props) => {
             userId={comment.id}
             room={room}
             isReply={address}
+            setIsReplying = {setIsReplying}
           />
         </>
       ) : (
