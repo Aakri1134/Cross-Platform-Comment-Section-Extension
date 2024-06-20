@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, auuth } from "../App";
+import defaultPhoto from "../assets/image.png"
 
 const PostComments = (props) => {
   const [newMessage, setNewMessage] = useState("");
@@ -15,6 +16,7 @@ const PostComments = (props) => {
     } else {
       await addDoc(messagesRef, {
         text: newMessage,
+        photoURL : auuth.currentUser.photoURL,
         createdAt: serverTimestamp(),
         user: auuth.currentUser.displayName,
         room: room,
@@ -28,7 +30,7 @@ const PostComments = (props) => {
   return (
     <div className="flex flex-col px-6 pb-3 gap-4 bg-gray-50 dark:bg-gray-900">
       <div className="relative h-11 w-full flex flex-row gap-5 justify-center items-center mt-3 mb-3">
-        <img src={auuth.currentUser.photoURL} className="h-10 w-10 rounded-full"/>
+        <img src={auuth.currentUser.photoURL ? auuth.currentUser.photoURL : defaultPhoto} className="h-10 w-10 rounded-full"/>
         <form onSubmit={handleSubmit} className="relative h-11 w-full flex flex-col gap-5 justify-center items-end">
         <input
           placeholder="Comment here.."

@@ -20,6 +20,7 @@ const Reply = (props) => {
     } else {
       await addDoc(messagesRef, {
         text: newMessage,
+        photoURL : auuth.currentUser.photoURL,
         createdAt: serverTimestamp(),
         user: auuth.currentUser.displayName,
         room: room,
