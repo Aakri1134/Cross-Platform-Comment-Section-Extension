@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Reply from "./Reply";
 import defaultPhoto from "../assets/image.png";
+import Time from "./Time";
 
 const ReplyBubble = (props) => {
   const { comment, address, room } = props;
@@ -13,7 +14,7 @@ const ReplyBubble = (props) => {
           className="w-8 h-8 rounded-full"
         />
         <p className="font-bold text-wrap text-primary-50 pt-2 pr-1 ">
-          {comment.user + " : "}
+          {comment.user + " : "}<Time time = {comment.createdAt}/>
         </p>
       </div>
 
