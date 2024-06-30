@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Cross Platform Comment Section Chrome Extension",
-  "description": "A chrome extension that provides a common comment section for similar content all over the web.",
-  "version": "1.0",
+  "name": "Stream Threads",
+  "description": "Comment Section for netflix, primevideo, jiocinema and more",
+  "version": "1.0.1",
   "host_permissions": [
     "https://*.youtube.com/*",
     "https://*.netflix.com/*",
@@ -12,8 +12,11 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"
   },
-  "icons": {},
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAldcuF/dtLsIFzFJmYVVkiaQsG6JcJVq8cVMosmN8l8isEPZkGWRTz1wMonrBFnaaB/jT1wLiLwqx/pA90Q7bu1ey4mrSnEV191qgqJZg5zoGdcT3Vhw1GWgkBOQjRRTk2eio6/Wkjyy/Xhsmudt3MyN/dTc8jm5cd/jBeEBqO14ILGzlMnbp692WG5DwXVyGmBQ0poO8JOnzaMg6TfubUJ3wEhl+B3L7YfA5s9dYHQd35VSwO8rl5P1o6uFZLw+nM75v8KAQbRY+4ZF4FK4I5GZhdjMN/kubH/nhmyetL2Bj3qValTwxbSZm+YuTh6tG4XcTtKNcJrPYlLe1Jr8j8wIDAQAB",
+  "icons": {
+    "48" : "stream48.png",
+    "128" : "stream128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApfx6jEvU/ESarQyA+i+0mAnco5N3u+iTqcyG6L3Q1MuGQ1j5xnJsStWNwFU0AcUBm9BTxBeVVhNTGMsW3G5a8kColRH5cbH7YFXrELAWGcHlqF44pI258u2Z/rW2bTTn8CcUrkMhU15GIJRAh7WUIkTYw5E4t7QUoZp+4Ny1mRON/eYJOv4tZWqGcjNM+bsRYA5vyv23tnY5XZwK/Dr5D/iOl5shByQvdp8NZjvEUBhrsFAJ5kn8K9TMPlVpMvC1NibSu7VXMCgOdlIRPQNXnYlq+n4lNdUR/3F4k316UL8FvQdhRk+cbBKnZG1TLFlStF8Glj0uqM1QBy7RXzLrjwIDAQAB",
   "permissions": ["sidePanel", "identity","tabs", "scripting"],
   "side_panel": {
     "default_path": "index.html"

@@ -1,6 +1,6 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth/web-extension";
 import CommentSection from "./Components/CommentSection";
 import Title from "./Components/Title";
 import PostComments from "./Components/PostComment";
@@ -9,7 +9,6 @@ import { firebaseConfig } from "./constants/credentials";
 import { useEffect, useState } from "react";
 import { getFirestore } from "firebase/firestore";
 import Loading from "./Components/Loading";
-import SignOut from "./Components/SignOut";
 import Footer from "./Components/Footer";
 
 const firebase = initializeApp(firebaseConfig);

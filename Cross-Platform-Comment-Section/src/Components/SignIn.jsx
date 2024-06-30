@@ -4,8 +4,7 @@ import {
   getAuth,
   signInWithCredential,
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+} from "firebase/auth/web-extension";
 import { getAuthToken } from "../scripts/google-login";
 import { firebaseConfig } from "../constants/credentials";
 import Register from "./Register";
