@@ -10,4 +10,6 @@ A chrome extension that provides a common comment section for similar content al
 ## TechStack-
 * JavaScript
 
+You can find our page on the chrome web store [here](https://chromewebstore.google.com/detail/stream-threads/igljibplfgkghaglhncijpofphcijbcp)
+
 
