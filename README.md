@@ -1,6 +1,6 @@
 # Cross Platform Comment Section Chrome Extension
 
-## Constibutors-
+## Contributors-
 * Suryanshu Choudhary
 * Aakrisht Srivastava
 
